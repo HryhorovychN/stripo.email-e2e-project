@@ -1,0 +1,8 @@
+2022-09-08 14:38:26,196 INFO  Sample info message 
+2022-09-08 14:38:26,197 WARN  Sample warn message 
+2022-09-08 14:38:26,197 ERROR Sample error message 
+2022-09-08 14:38:26,197 FATAL Sample fatal message 
+2022-09-08 14:39:25,765 INFO  Sample info message 
+2022-09-08 14:39:25,765 WARN  Sample warn message 
+2022-09-08 14:39:25,765 ERROR Sample error message 
+2022-09-08 14:39:25,765 FATAL Sample fatal message 
