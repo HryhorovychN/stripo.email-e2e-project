@@ -124,6 +124,7 @@ public class BlogPage extends BasePage {
     }
 
     public BlogPage checkArticleItemCount(int count) {
+        sleep(1000);
         Assert.assertEquals($$(".article__item").size(), count);
         return this;
     }
