@@ -4,7 +4,7 @@ import org.testng.annotations.DataProvider;
 public class DataProviderForm {
 
     @DataProvider(name = "esputnikSubscribeForm")
-    public static Object[] esputnikForm() {
+    public static Object[][] esputnikForm() {
         String email;
         return new Object[][] {
                 {User.getInvalidEmail(), "Need a valid email"},
@@ -13,14 +13,14 @@ public class DataProviderForm {
     }
 
     @DataProvider(name = "validDataForSubscribeForm")
-    public Object[] baseSubscribeFormValidData() {
+    public static Object[][] baseSubscribeFormValidData() {
         return new Object[][] {
                 {User.getValidTestEmail(), "Thanks! You're subscribed, look for a confirmation email shortly."},
         };
     }
 
     @DataProvider(name = "invalidDataForSubscribeForm")
-    public Object[] baseSubscribeFormInvalidData() {
+    public static Object[][] baseSubscribeFormInvalidData() {
         return new Object[][] {
                 {User.getInvalidEmail(), "Please enter a valid email address"},
                 {"", "This action is unauthorized"}

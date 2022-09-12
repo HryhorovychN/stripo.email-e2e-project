@@ -13,7 +13,6 @@ public class AmpExamplePage extends BasePage {
         return this;
     }
 
-
     public AmpExamplePage clickAmpExamples(boolean expected) {
         doInEsputnikFrame(() -> {
             if (expected) {

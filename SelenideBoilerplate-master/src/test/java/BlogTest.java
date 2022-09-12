@@ -35,23 +35,24 @@ public class BlogTest extends BaseTest {
     }
 
     @DataProvider(name = "categoryFilter")
-    public Object[] ArticleCategories() {
-        return new Object[]{
-                List.of(DESIGN, TEMPLATES, AMP), List.of(MARKETING, STRUCTURE)
+    public Object[][] ArticleCategories() {
+        return new Object[][]{
+                {EN, List.of(DESIGN, TEMPLATES, AMP)},
+                {EN, List.of(MARKETING, STRUCTURE)}
         };
     }
 
     @Test(dataProvider = "categoryFilter")
-    public void categoryFiltersShouldWorkCorrectlyTest(List<BlogCategory> blogCategories) {
+    public void categoryFiltersShouldWorkCorrectlyTest(Locale locale, List<BlogCategory> blogCategories) {
         App
-                .openBlogPage(EN)
+                .openBlogPage(locale)
                 .selectBlogFilters(blogCategories)
                 .clickNext9Articles(1)
                 .checkArticleItemCategories(blogCategories);
     }
 
     @DataProvider(name = "keyWord")
-    public Object[] keyWord() {
+    public Object[][] keyWord() {
         return new Object[][]{
                 {EN, "Black Friday"},
                 {RU, "День отца"}

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class CustomerStoriesTest extends BaseTest {
 
     @DataProvider(name = "сustomerStoriesForm")
-    public Object[] сustomerStoriesForm() {
+    public Object[][] сustomerStoriesForm() {
         return new Object[][]{
                 {"", User.getInvalidEmail(), false, "Please enter a valid email address", "Please enter your name"},
                 {"User", User.getValidTestEmail(), true, "We will contact you within our working hours (9:00 AM - 6:00 PM EET).\n" +

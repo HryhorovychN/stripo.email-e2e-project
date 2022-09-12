@@ -1,17 +1,13 @@
-import com.codeborne.selenide.logevents.SelenideLogger;
+
 import commons.App;
-import commons.helpers.Driver;
-import io.qameta.allure.selenide.AllureSelenide;
+import commons.Driver;
+import commons.config.RunnerConfig;
+import commons.listeners.TestListener;
 import lombok.extern.apachecommons.CommonsLog;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
-import org.testng.ITestContext;
-import org.testng.ITestNGMethod;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
@@ -24,9 +20,12 @@ public class BaseTest extends TestListener {
     protected App app;
     protected SoftAssert softAssert;
     protected Logger logger;
+    protected final RunnerConfig config = new RunnerConfig();
 
+
+    @Parameters({"browser", "browserVersion"})
     @BeforeClass
-    public void setUp() {
+    public void setUp(@Optional("Chrome") String browser, @Optional String browserVersion) {
         try {
             HttpURLConnection connection;
             connection = (HttpURLConnection) new URL(App.STAGING_BASE_URL).openConnection();
@@ -41,22 +40,13 @@ public class BaseTest extends TestListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        Driver.initDriver();
-        setupAllureReports();
+        config.setUpConfig(browser, browserVersion);
         app = new App();
         softAssert = new SoftAssert();
         logger = LogManager.getLogger("");
+
         DOMConfigurator.configure("src/main/resources/log4j.xml");
     }
-
-//    @BeforeSuite
-//    public void setUpTestsSuite(ITestContext tests_context) {
-//        for (ITestNGMethod test_method : tests_context.getAllTestMethods()) {
-//            if (test_method.getRetryAnalyzer() == null)
-//                test_method.setRetryAnalyzer(new RetryAnalyzer());
-//        }
-//    }
 
     @AfterMethod
     public void clearCookie() {
@@ -70,12 +60,4 @@ public class BaseTest extends TestListener {
         Driver.close();
     }
 
-
-
-    static void setupAllureReports() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-                .screenshots(true)
-                .savePageSource(true)
-        );
-    }
 }

@@ -13,7 +13,7 @@ import static commons.data.dataPage.Locale.EN;
 public class TemplateOrderTest {
 
     @DataProvider(name = "templateOrderForm")
-    public Object[] TemplateOrderForm() {
+    public Object[][] TemplateOrderForm() {
         return new Object[][]{
                 {"DESIGN DEVELOPMENT", false, true, true, "254"},
                 {"DEVELOPMENT", true, true, false, "180"}

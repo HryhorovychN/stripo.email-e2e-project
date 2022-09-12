@@ -9,7 +9,7 @@ import static commons.data.dataPage.Locale.*;
 public class HomeTest extends BaseTest {
 
     @DataProvider(name = "seoTitleTranslateList")
-    public Object[] localizationMap() {
+    public Object[][] localizationMap() {
         return new Object[][]{
                 {FR, "Plate-forme de conception d'e-mails", "Stripo — générateur GRATUIT de modèles d'e-mails : éditeur de courrier électronique HTML par glisser/déposer."},
                 {IT, "Piattaforma per la Progettazione di E-mail", "Stripo — FREE Email Template Builder: editor HTML trascina e rilascia per la posta elettronica"},

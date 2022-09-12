@@ -8,7 +8,7 @@ public class AmpExampleTest extends BaseTest {
 
     @Test(dataProviderClass = DataProviderForm.class, dataProvider = "validDataForSubscribeForm")
     @Description("This test verify sent subscribe form with valid data")
-    public void verifySentSubscribeFormWithValidDataTest(String email, String message) {
+    public static void verifySentSubscribeFormWithValidDataTest(String email, String message) {
         App
                 .openAmpExamplePage(EN)
                 .sendSubscribeForm(email)
@@ -17,7 +17,7 @@ public class AmpExampleTest extends BaseTest {
 
     @Test(dataProviderClass = DataProviderForm.class, dataProvider = "invalidDataForSubscribeForm")
     @Description("This test verify sent subscribe form with invalid data")
-    public void verifySentSubscribeFormWithInvalidDataTest(String email, String message) {
+    public static void verifySentSubscribeFormWithInvalidDataTest(String email, String message) {
         App
                 .openAmpExamplePage(EN)
                 .sendSubscribeForm(email)
