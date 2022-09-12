@@ -1,8 +1,13 @@
 import commons.App;
 import commons.data.User;
+import commons.helpers.Driver;
 import org.testng.annotations.Test;
 
 public class AdminTest extends BaseTest{
+
+    @Override
+    public void clearCookie() {
+    }
 
     @Test
     public void loginAdminTest() {

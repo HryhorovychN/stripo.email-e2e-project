@@ -1,5 +1,6 @@
 import commons.App;
 import commons.data.dataPage.Locale;
+import io.qameta.allure.Description;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -28,8 +29,18 @@ public class HomeTest extends BaseTest {
                 .checkTitlePage(locale, expectedTitle);
     }
 
-    @Test(dataProviderClass = DataProviderForm.class, dataProvider = "baseSubscribeForm")
-    public void verifySentSubscribeFormTest(String email, String message) {
+    @Test(dataProviderClass = DataProviderForm.class, dataProvider = "validDataForSubscribeForm")
+    @Description("This test verify sent subscribe form with valid data")
+    public void verifySentSubscribeFormWithValidDataTest(String email, String message) {
+        App
+                .openHomePage(EN)
+                .sendSubscribeForm(email)
+                .checkSubscribeFormMessage(message);
+    }
+
+    @Test(dataProviderClass = DataProviderForm.class, dataProvider = "invalidDataForSubscribeForm")
+    @Description("This test verify sent subscribe form with invalid data")
+    public void verifySentSubscribeFormWithInvalidDataTest(String email, String message) {
         App
                 .openHomePage(EN)
                 .sendSubscribeForm(email)

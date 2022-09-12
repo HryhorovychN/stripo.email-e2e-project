@@ -1,6 +1,7 @@
 import commons.App;
 import commons.data.User;
 import commons.data.dataPage.PluginDto;
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
 import static commons.data.dataPage.Locale.EN;
@@ -28,8 +29,18 @@ public class PluginTest extends BaseTest {
                         "We will contact you in 3 business days.");
     }
 
-    @Test(dataProviderClass = DataProviderForm.class, dataProvider = "baseSubscribeForm")
-    public void verifySentSubscribeFormTest(String email, String message) {
+    @Test(dataProviderClass = DataProviderForm.class, dataProvider = "validDataForSubscribeForm")
+    @Description("This test verify sent subscribe form with valid data")
+    public void verifySentSubscribeFormWithValidDataTest(String email, String message) {
+        App
+                .openPluginPage(EN)
+                .sendSubscribeForm(email)
+                .checkSubscribeFormMessage(message);
+    }
+
+    @Test(dataProviderClass = DataProviderForm.class, dataProvider = "invalidDataForSubscribeForm")
+    @Description("This test verify sent subscribe form with invalid data")
+    public void verifySentSubscribeFormWithInvalidDataTest(String email, String message) {
         App
                 .openPluginPage(EN)
                 .sendSubscribeForm(email)

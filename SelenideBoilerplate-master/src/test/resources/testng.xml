@@ -3,12 +3,24 @@
 <suite name="SelenideAutoTests" verbose="1">
 
     <listeners>
-        <listener class-name="A_BaseTestListener"/>
+        <listener class-name="TestListener"/>
     </listeners>
 
-    <test name="Tests">
+    <test name="Site Tests" parallel="methods" thread-count="5" >
         <classes>
-            <class name="ExampleTest" />
+            <class name="BlogTest" />
+            <class name="AmpExampleTest" />
+            <class name="CustomerStoriesTest" />
+            <class name="HomeTest" />
+            <class name="PluginTest" />
+            <class name="TemplateOrderTest" />
+            <class name="TemplateTest" />
+        </classes>
+    </test>
+
+    <test name="Admin Tests">
+        <classes>
+            <class name="AdminTest" />
         </classes>
     </test>
 

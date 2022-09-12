@@ -29,7 +29,7 @@ public class Driver {
         Configuration.holdBrowserOpen = false;
         Configuration.screenshots = true;
         Configuration.timeout = 10000;
-        browser = "FIREFOX";
+        browser = "CHROME";
 
         switch (browser)
         {

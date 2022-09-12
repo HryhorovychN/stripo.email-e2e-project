@@ -48,14 +48,13 @@ public class BlogTest extends BaseTest {
                 .selectBlogFilters(blogCategories)
                 .clickNext9Articles(1)
                 .checkArticleItemCategories(blogCategories);
-        Selenide.clearBrowserCookies();
     }
 
     @DataProvider(name = "keyWord")
     public Object[] keyWord() {
         return new Object[][]{
                 {EN, "Black Friday"},
-                {RU, "Святого Валентина"}
+                {RU, "День отца"}
         };
     }
 

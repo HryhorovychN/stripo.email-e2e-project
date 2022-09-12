@@ -7,6 +7,7 @@ import com.codeborne.selenide.SelenideElement;
 import commons.data.dataPage.BlogCategory;
 import commons.data.dataPage.ItemType;
 import commons.data.dataPage.Locale;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -22,7 +23,7 @@ public class BlogPage extends BasePage {
     public BlogPage checkSelectedPage(Locale locale, String expectedText) {
         return super.checkOnPage(locale, $("h1.text-center"), expectedText, BlogPage.class);
     }
-
+    @Step("Select blog filter categories")
     public BlogPage selectBlogFilters(List<BlogCategory> blogCategory) {
         sleep(1500);
         $(".blog__search-wrap").shouldBe(Condition.visible);
@@ -35,6 +36,7 @@ public class BlogPage extends BasePage {
         return this;
     }
 
+    @Step("Check that that any templates have any selected categories")
     public BlogPage checkArticleItemCategories(List<BlogCategory> categoriesName) {
         sleep(2500);
         ElementsCollection articleItemCategories = $$(".article__item-category");
@@ -49,7 +51,7 @@ public class BlogPage extends BasePage {
         }
         return this;
     }
-
+    @Step("Click on the show next articles button")
     public BlogPage clickNext9Articles(int timeClick) {
         for (int i=0; i < timeClick; i++) {
             $("#load-article-nav .button-secondary").shouldBe(Condition.visible).click();
@@ -57,6 +59,7 @@ public class BlogPage extends BasePage {
         return this;
     }
 
+    @Step("Check that show next articles button visible")
     public BlogPage checkNext9Articles(boolean expected) {
             $("#load-article-nav .button-secondary").shouldBe(expected? Condition.visible: Condition.not(Condition.exist));
         return this;
@@ -67,6 +70,7 @@ public class BlogPage extends BasePage {
         return this;
     }
 
+    @Step("Enter value into search input and click search button")
     public BlogPage searchArticleByKeyWord(String articleName) {
         SelenideElement search = $(By.id("blog-search"));
         search.$(By.name("search")).shouldBe(Condition.visible).setValue(articleName);
@@ -74,9 +78,12 @@ public class BlogPage extends BasePage {
         return this;
     }
 
+    @Step("Check that any articles have expected text")
     public BlogPage checkAnyArticleHasText(String expectedArticleText) {
         $$(".article__item .article__item-title")
-                .shouldHave(CollectionCondition.anyMatch("", article -> article.getText().contains(expectedArticleText)));
+                .shouldHave(CollectionCondition.anyMatch("", article ->
+                        article.getText().toUpperCase()
+                        .contains(expectedArticleText.toUpperCase())));
         return this;
     }
 

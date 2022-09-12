@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="selenide-boilerplate" target="9" />
+      <module name="selenide-boilerplate" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

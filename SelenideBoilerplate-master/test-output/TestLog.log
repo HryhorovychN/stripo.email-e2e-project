@@ -6,3 +6,10 @@
 2022-09-08 14:39:25,765 WARN  Sample warn message 
 2022-09-08 14:39:25,765 ERROR Sample error message 
 2022-09-08 14:39:25,765 FATAL Sample fatal message 
+2022-09-12 12:14:29,325 ERROR Bad Gatewaysun.net.www.protocol.http.HttpURLConnection$HttpInputStream@55b688f3 
+2022-09-12 12:14:29,808 ERROR Bad Gatewaysun.net.www.protocol.http.HttpURLConnection$HttpInputStream@440b67a9 
+2022-09-12 12:14:29,808 ERROR Bad Gatewaysun.net.www.protocol.http.HttpURLConnection$HttpInputStream@e638409 
+2022-09-12 12:14:30,057 ERROR Bad Gatewaysun.net.www.protocol.http.HttpURLConnection$HttpInputStream@17b826a 
+2022-09-12 12:14:30,312 ERROR Bad Gatewaysun.net.www.protocol.http.HttpURLConnection$HttpInputStream@7ea98c21 
+2022-09-12 12:14:30,557 ERROR Bad Gatewaysun.net.www.protocol.http.HttpURLConnection$HttpInputStream@4aed956d 
+2022-09-12 12:14:42,735 ERROR Bad Gatewaysun.net.www.protocol.http.HttpURLConnection$HttpInputStream@3fa76c61 

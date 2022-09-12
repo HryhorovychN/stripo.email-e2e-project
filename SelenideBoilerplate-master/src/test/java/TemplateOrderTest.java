@@ -51,12 +51,13 @@ public class TemplateOrderTest {
                         new File(classLoader.getResource("archive.zip").getFile()),
                         new File(classLoader.getResource("image.gif").getFile()),
                         new File(classLoader.getResource("template.pdf").getFile()),
-                        new File(classLoader.getResource("image.jpeg").getFile())));
+                        new File(classLoader.getResource("image.png").getFile()),
+                        new File(classLoader.getResource("image.jpg").getFile())));
 
         TemplateOrderPage templateOrderPage = page(TemplateOrderPage.class);
 
         templateOrderPage
-                .checkUploadedFilesCount(4);
+                .checkUploadedFilesCount(5);
     }
 
 }

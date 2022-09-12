@@ -1,12 +1,17 @@
+import com.codeborne.selenide.logevents.SelenideLogger;
 import commons.App;
 import commons.helpers.Driver;
+import io.qameta.allure.selenide.AllureSelenide;
 import lombok.extern.apachecommons.CommonsLog;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
+import org.testng.ITestContext;
+import org.testng.ITestNGMethod;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
@@ -38,17 +43,26 @@ public class BaseTest extends TestListener {
         }
 
         Driver.initDriver();
-        //setupAllureReports();
+        setupAllureReports();
         app = new App();
         softAssert = new SoftAssert();
         logger = LogManager.getLogger("");
         DOMConfigurator.configure("src/main/resources/log4j.xml");
     }
 
+//    @BeforeSuite
+//    public void setUpTestsSuite(ITestContext tests_context) {
+//        for (ITestNGMethod test_method : tests_context.getAllTestMethods()) {
+//            if (test_method.getRetryAnalyzer() == null)
+//                test_method.setRetryAnalyzer(new RetryAnalyzer());
+//        }
+//    }
+
     @AfterMethod
     public void clearCookie() {
         Driver.clearCookies();
     }
+
 
     @AfterClass
     public void tearDown() {
@@ -56,10 +70,12 @@ public class BaseTest extends TestListener {
         Driver.close();
     }
 
-//    static void setupAllureReports() {
-//        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-//                .screenshots(true)
-//                .savePageSource(true)
-//        );
-//    }
+
+
+    static void setupAllureReports() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(true)
+        );
+    }
 }
