@@ -32,7 +32,7 @@ public class BaseTest extends TestListener {
             connection.setRequestMethod("GET");
             connection.connect();
             if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
-                log.error(connection.getResponseMessage() + connection.getErrorStream());
+                logger.error(connection.getResponseMessage() + connection.getErrorStream());
                 connection.disconnect();
                 Driver.close();
             }
