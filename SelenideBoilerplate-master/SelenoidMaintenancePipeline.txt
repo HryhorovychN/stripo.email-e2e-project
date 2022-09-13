@@ -5,9 +5,9 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                git credentialsId: 'Crushpowerx',
-                    branch: 'main',
-                    url: 'https://github.com/Crushpowerx/JavaMavenTestngSelenideExample.git'
+                git credentialsId: 'HryhorovychN',
+                    branch: 'master',
+                    url: 'https://github.com/HryhorovychN/stripo.email-e2e-project.git'
             }
         }
         stage('Clean') {
